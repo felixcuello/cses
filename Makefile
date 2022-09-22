@@ -6,7 +6,7 @@ all:
 	@echo ""
 
 build:
-	@g++ -g -Wall $(PROBLEM).cc -o $(PROBLEM)
+	@g++ -std=c++0x -O2 -Wall -g $(PROBLEM).cc -o $(PROBLEM)
 
 run: build
 	./$(PROBLEM) < $(PROBLEM).in > $(PROBLEM).out
