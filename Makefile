@@ -20,3 +20,7 @@ clean:
 create:
 	@cp template.cc $(PROBLEM).cc
 	@touch $(PROBLEM).in
+
+install_std:
+	sudo mkdir -p /Library/Developer/CommandLineTools/usr/include/bits/
+	sudo cp stdc++.h /Library/Developer/CommandLineTools/usr/include/bits/
