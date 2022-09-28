@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 
+#define UL unsigned long
 #define ULL unsigned long long
 #define LL long long
 
