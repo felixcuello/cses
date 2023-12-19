@@ -2,6 +2,7 @@ all:
 	@echo "CSES makefile"
 	@echo ""
 	@echo "make PROBLEM=<problem_name> run      # Compiles and run the problem"
+	@echo "make PROBLEM=<problem_name> rbrun    # Run the problem (ruby)"
 	@echo "...and so on :-) [Check the Makefile]"
 	@echo ""
 
@@ -10,6 +11,9 @@ build:
 
 run: build
 	./$(PROBLEM) < $(PROBLEM).in > $(PROBLEM).out
+
+rbrun:
+	ruby $(PROBLEM).rb < $(PROBLEM).in > $(PROBLEM).my_out && diff $(PROBLEM).my_out $(PROBLEM).out
 
 debug: build
 	@gdb ./$(PROBLEM) < $(PROBLEM).in
