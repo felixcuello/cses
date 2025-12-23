@@ -1,1 +1,4 @@
 *.my_out
+*.in
+*.out
+algorithms/
