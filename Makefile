@@ -1,22 +1,19 @@
 all:
-	@echo "CSES makefile"
 	@echo ""
-	@echo "make PROBLEM=<problem_name> run      # Compiles and run the problem"
-	@echo "make PROBLEM=<problem_name> rbrun    # Run the problem (ruby)"
-	@echo "...and so on :-) [Check the Makefile]"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo " CSES makefile"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo ""
+	@echo "make PROBLEM=<problem_name> run                               # Compile and run C++ solution"
+	@echo "make PROBLEM=<problem_name> create                            # Create template C++ solution"
+	@echo ""
 	@echo ""
 
-build:
-	@g++ -std=c++0x -O2 -Wall -g $(PROBLEM).cc -o $(PROBLEM)
+compile:
+	g++ -std=c++0x -O2 -Wall -g $(PROBLEM).cc -o $(PROBLEM)
 
-run: build
+run: compile
 	./$(PROBLEM) < $(PROBLEM).in > $(PROBLEM).out
-
-rbrun:
-	ruby $(PROBLEM).rb < $(PROBLEM).in > $(PROBLEM).my_out && diff $(PROBLEM).my_out $(PROBLEM).out
-
-debug: build
-	@gdb ./$(PROBLEM) < $(PROBLEM).in
 
 clean:
 	@rm -rf $(PROBLEM) $(PROBLEM).out $(PROBLEM).dSYM
@@ -24,6 +21,7 @@ clean:
 create:
 	@cp template.cc $(PROBLEM).cc
 	@touch $(PROBLEM).in
+	@touch $(PROBLEM).out
 
 install_std:
 	sudo mkdir -p /Library/Developer/CommandLineTools/usr/include/bits/
