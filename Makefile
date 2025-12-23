@@ -13,10 +13,12 @@ compile:
 	g++ -std=c++0x -O2 -Wall -g $(PROBLEM).cc -o $(PROBLEM)
 
 run: compile
-	./$(PROBLEM) < $(PROBLEM).in > $(PROBLEM).out
+	./$(PROBLEM) < $(PROBLEM).in > $(PROBLEM).my_out
+	@echo "-----------------------------------"
+	diff $(PROBLEM).out $(PROBLEM).my_out
 
 clean:
-	@rm -rf $(PROBLEM) $(PROBLEM).out $(PROBLEM).dSYM
+	rm -rf $(PROBLEM) $(PROBLEM).my_out $(PROBLEM).dSYM $(PROBLEM).in $(PROBLEM).out
 
 create:
 	@cp template.cc $(PROBLEM).cc
